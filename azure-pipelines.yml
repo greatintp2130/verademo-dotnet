@@ -3,14 +3,13 @@ trigger:
 pool:
   vmImage: 'ubuntu-latest'
 steps:
+
+
 - task: DotNetCoreCLI@2
   inputs:
-    command: 'publish'
-    publishWebProjects: true
-    arguments: '-c Debug - o $(Build.SourcesDirectory)/dotnet'
-    replaceExistingArchive: true
-
-
+    command: 'build'
+    projects: '$(Build.SourcesDirectory)'
+    arguments: '- o (BuildSourcesDirectory/dotnet)'
 - task: Bash@3
   inputs:
     targetType: 'inline'
